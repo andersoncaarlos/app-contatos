@@ -41,7 +41,7 @@ public class PessoaService {
 		if (findPessoa.isPresent()) {
 			Pessoa updPessoa = findPessoa.get();
 			updPessoa.setNome(pessoa.getNome());
-			updPessoa.setEndereço(pessoa.getEndereço());
+			updPessoa.setEndereco(pessoa.getEndereco());
 			updPessoa.setCep(pessoa.getCep());
 			updPessoa.setCidade(pessoa.getCidade());
 			updPessoa.setUf(pessoa.getUf());

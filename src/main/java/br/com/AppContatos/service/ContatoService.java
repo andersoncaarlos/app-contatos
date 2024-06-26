@@ -3,6 +3,7 @@ package br.com.AppContatos.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.AppContatos.model.Contato;
@@ -11,6 +12,7 @@ import br.com.AppContatos.repository.ContatoRepository;
 @Service
 public class ContatoService {
 	
+	@Autowired
 	private ContatoRepository contatoRepository;
 	
 	public Contato criar(Contato contato) {
@@ -26,16 +28,16 @@ public class ContatoService {
 		try {
 			return contatoRepository.save(contato);
 		} catch (Exception e) {
-			System.out.println("Erro ao inserir o contato" + contato.toString() + ": " + e.getMessage());
+			System.out.println("Erro ao inserir o contato " + contato.toString() + ": " + e.getMessage());
 			return null;
 		}		
 	}
 	
-	public List<Contato> buscarContatos() {
+	public List<Contato> listarContatos() {
 		return contatoRepository.findAll();
 	}
 	
-	public Optional<Contato> findById(Long id) {
+	public Optional<Contato> buscarPorId(Long id) {
 		return contatoRepository.findById(id);
 	}
 	
@@ -49,6 +51,10 @@ public class ContatoService {
 			return contatoRepository.save(updContato);			
 		}
 		return contatoRepository.save(contato);
+	}
+	
+	public void deletar(Long id) {
+		contatoRepository.deleteById(id);
 	}
 	
 	
