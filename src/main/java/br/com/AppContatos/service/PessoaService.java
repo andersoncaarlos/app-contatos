@@ -1,11 +1,13 @@
 package br.com.AppContatos.service;
 
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.AppContatos.dto.PessoaDTO;
 import br.com.AppContatos.model.Pessoa;
 import br.com.AppContatos.repository.PessoaRepository;
 
@@ -53,4 +55,40 @@ public class PessoaService {
 	public void deletar(Long id) {
 		pessoaRepository.deleteById(id);		
 	}	
+	
+	/**
+	 * Consulta em banco de dados, onde retorna o registro de Pessoa com endereço completo em um único registro
+	 * @param id de pessoa
+	 * @return lista de PessoaDTO
+	 */
+	public List<PessoaDTO> malaDireta(Long id) {
+		
+		List<Object[]> listResult = pessoaRepository.malaDireta(id);
+		List<PessoaDTO> listPessoaDTO = new ArrayList<PessoaDTO>();
+		
+		//Conversão de objeto de banco de dados para PessoaDTO
+		for (Object[] obj : listResult) {
+			PessoaDTO pDTO = returnDBPessoaDTO(obj);
+			listPessoaDTO.add(pDTO);
+		}
+		return listPessoaDTO;		
+	}
+	
+	/**
+	 * Conversão de objeto recebido do banco de dados para DTO de Pessoa
+	 * @param resultado objeto do banco de dados
+	 * @return Objeto PessoaDTO
+	 */
+	private PessoaDTO returnDBPessoaDTO(Object[] resultado) {
+		if (resultado != null) {
+			PessoaDTO pessoaDTO = new PessoaDTO(
+					(((Long) resultado[0]).longValue()),
+					((String)resultado[1]),
+					((String)resultado[2]));
+			return pessoaDTO;
+		} 
+		else {
+			return null;
+		}
+	}
 }

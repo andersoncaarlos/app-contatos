@@ -17,13 +17,13 @@ public class ContatoService {
 	
 	public Contato criar(Contato contato) {
 		if (contato.getContato() == null) {
-			System.out.println("Campo de contato está vazio.");
+			System.out.println("O campo de contato está vazio.");
 		}
 		if (contato.getPessoa() == null) {
 			System.out.println("O contato precisa estar relacionado à uma pessoa");
 		}
 		if (contato.getTipo() == null) {
-			System.out.println("O campo tipo não pode ser nulo");
+			System.out.println("O campo tipo está vazio");
 		}
 		try {
 			return contatoRepository.save(contato);
