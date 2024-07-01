@@ -25,7 +25,7 @@ public class Pessoa {
 	private String nome;
 	
 	@Column
-	private String endereço;
+	private String endereco;
 	
 	@Column
 	@Size(min = 8, message = "CEP deve conter 8 digitos")
@@ -40,10 +40,10 @@ public class Pessoa {
 	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Contato> contatos;
 	
-	public Pessoa(Long id, String nome, String endereço, String cep, String cidade, String uf) {
+	public Pessoa(Long id, String nome, String endereco, String cep, String cidade, String uf) {
 		this.id = id;
 		this.nome = nome;
-		this.endereço = endereço;
+		this.endereco = endereco;
 		this.cep = cep;
 		this.cidade = cidade;
 		this.uf = uf;
@@ -68,12 +68,12 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
-	public String getEndereço() {
-		return endereço;
+	public String getEndereco() {
+		return endereco;
 	}
 
-	public void setEndereço(String endereço) {
-		this.endereço = endereço;
+	public void setEndereco(String endereço) {
+		this.endereco = endereço;
 	}
 
 	public String getCep() {
@@ -119,7 +119,7 @@ public class Pessoa {
 
 	@Override
 	public String toString() {
-		return "Pessoa [id=" + id + ", nome=" + nome + ", endereço=" + endereço + ", cep=" + cep + ", cidade=" + cidade
+		return "Pessoa [id=" + id + ", nome=" + nome + ", endereço=" + endereco + ", cep=" + cep + ", cidade=" + cidade
 				+ ", uf=" + uf + "]";
 	}	
 }

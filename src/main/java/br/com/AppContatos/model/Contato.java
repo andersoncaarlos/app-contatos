@@ -28,14 +28,14 @@ public class Contato {
 	private tipoTelefone tipo;
 	
 	@Column(nullable = false)
-	private Integer contato;
+	private String contato;
 	
 	@NotNull(message = "Campo Pessoa não pode está vazio")
 	@ManyToOne
 	@JoinColumn(name = "pessoa_id", referencedColumnName = "id")
 	private Pessoa pessoa;
 		
-	public Contato(Long id, tipoTelefone tipo, Integer contato, Pessoa pessoa) {
+	public Contato(Long id, tipoTelefone tipo, String contato, Pessoa pessoa) {
 		this.id = id;
 		this.tipo = tipo;
 		this.contato = contato;
@@ -61,11 +61,11 @@ public class Contato {
 		this.tipo = tipo;
 	}
 
-	public Integer getContato() {
+	public String getContato() {
 		return contato;
 	}
 
-	public void setContato(Integer contato) {
+	public void setContato(String contato) {
 		this.contato = contato;
 	}
 

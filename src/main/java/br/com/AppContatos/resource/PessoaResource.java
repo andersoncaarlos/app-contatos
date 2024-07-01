@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.AppContatos.service.PessoaService;
 import io.swagger.v3.oas.annotations.Operation;
+import br.com.AppContatos.dto.PessoaDTO;
 import br.com.AppContatos.model.Pessoa;
 
 @RestController
@@ -29,8 +30,8 @@ public class PessoaResource {
 	@Operation(summary = "Busca por todos os registros de pessoas")
 	@GetMapping
 	public ResponseEntity<List<Pessoa>> buscarPessoas() {
-		List<Pessoa> pessoas = pessoaService.listarPessoas();
 		
+		List<Pessoa> pessoas = pessoaService.listarPessoas();		
 		if(pessoas == null) {
 			return ResponseEntity.notFound().build();
 		}
@@ -42,7 +43,7 @@ public class PessoaResource {
 
 	@Operation(summary = "Busca registro de pessoas por ID")
 	@GetMapping("/{id}")
-	public ResponseEntity<Optional<Pessoa>> findById(@PathVariable Long id) {
+	public ResponseEntity<Optional<Pessoa>> buscarPorId(@PathVariable Long id) {
 		Optional<Pessoa> pessoa = pessoaService.buscarPorId(id);
 		if (pessoa.isEmpty()) {
 			return ResponseEntity.notFound().build();
@@ -52,7 +53,7 @@ public class PessoaResource {
 	
 	@Operation(summary = "Salva registro de pessoa")
 	@PostMapping
-	public ResponseEntity<Pessoa> save(@RequestBody Pessoa pessoa) {
+	public ResponseEntity<Pessoa> criar(@RequestBody Pessoa pessoa) {
 		Pessoa newPessoa = pessoaService.criar(pessoa);
 		
 		if (newPessoa == null) {
@@ -63,7 +64,7 @@ public class PessoaResource {
 	
 	@Operation(summary = "Atualiza registro de pessoa")
 	@PutMapping
-	public ResponseEntity<Pessoa> atualizar(Pessoa pessoa) {
+	public ResponseEntity<Pessoa> atualizar(@RequestBody Pessoa pessoa) {
 		Pessoa updPessoa = pessoaService.atualizar(pessoa);
 		if (updPessoa == null) {
 			return ResponseEntity.notFound().build();
@@ -73,8 +74,22 @@ public class PessoaResource {
 	
 	@Operation(summary = "Exclui registro de pessoa")
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> delete(Long id) {
+	public ResponseEntity<?> delete(@PathVariable Long id) {
 		pessoaService.deletar(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}	
+	
+	@Operation(summary = "Pesquisa de uma lista contendo os dados de Pessoa com seu endereço completo em um único registro")
+	@GetMapping("/malaDireta/{id}")
+	public ResponseEntity<List<PessoaDTO>> malaDireta(@PathVariable Long id) {
+		
+		List<PessoaDTO> pessoaDto = pessoaService.malaDireta(id);	
+		if(pessoaDto == null) {
+			return ResponseEntity.notFound().build();
+		}
+		if(pessoaDto.size() == 0) {
+			ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(pessoaDto);		
+	}
 }
