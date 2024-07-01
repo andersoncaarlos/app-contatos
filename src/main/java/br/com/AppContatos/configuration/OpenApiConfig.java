@@ -17,8 +17,8 @@ public class OpenApiConfig {
 		return new OpenAPI()
 				.components(
 						new Components()).info(new Info()
-							.title("Aplicativo de Cadastro")
-							.description("Este app faz controle de cadastro de pessoas e seus contatos")
+							.title("Aplicação de Cadastro")
+							.description("Essa aplicação faz controle de cadastro de pessoas e seus contatos")
 							.contact(new Contact()
 										.name("Anderson Carlos de Morais Silva")
 										.email("ander_son12@hotmail.com")
