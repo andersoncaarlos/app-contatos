@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.AppContatos.service.ContatoService;
+import io.swagger.v3.oas.annotations.Operation;
 import br.com.AppContatos.model.Contato;
 
 @RestController
@@ -25,6 +26,7 @@ public class ContatoResource {
 	@Autowired
 	private ContatoService contatoService;
 	
+	@Operation(summary = "Lista todos os registros de contatos")
 	@GetMapping
 	public ResponseEntity<List<Contato>> listarContatos() {
 		List<Contato> contatos = contatoService.listarContatos();
@@ -34,6 +36,7 @@ public class ContatoResource {
 		return ResponseEntity.ok(contatos);
 	}
 	
+	@Operation(summary = "Busca registro de contato por ID")
 	@GetMapping("/{id}")
 	public ResponseEntity<Optional<Contato>> buscarPorId(@PathVariable Long id) {
 		Optional<Contato> findContato = contatoService.buscarPorId(id);
@@ -44,6 +47,7 @@ public class ContatoResource {
 		return ResponseEntity.ok(findContato);
 	}
 
+	@Operation(summary = "Cria um novo registro de contato")
 	@PostMapping
 	public ResponseEntity<Contato> criar(@RequestBody Contato contato) {
 		Contato novoContato = contatoService.criar(contato);
@@ -53,6 +57,7 @@ public class ContatoResource {
 		return ResponseEntity.ok(novoContato);
 	}
 	
+	@Operation(summary = "Atualiza um registro de contato")
 	@PutMapping
 	public ResponseEntity<Contato> atualizar(@RequestBody Contato contato) {
 		Contato updContato = contatoService.atualizar(contato);
@@ -63,6 +68,7 @@ public class ContatoResource {
 		return ResponseEntity.ok(contato);		
 	}
 	
+	@Operation(summary = "Exclui um registro de contato")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deletar(@PathVariable Long id) {
 		contatoService.deletar(id);

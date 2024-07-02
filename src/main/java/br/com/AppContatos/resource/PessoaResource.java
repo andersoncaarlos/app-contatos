@@ -27,7 +27,7 @@ public class PessoaResource {
 	@Autowired
 	private PessoaService pessoaService;
 	
-	@Operation(summary = "Busca por todos os registros de pessoas")
+	@Operation(summary = "Lista todos os registros de pessoas")
 	@GetMapping
 	public ResponseEntity<List<Pessoa>> buscarPessoas() {
 		
@@ -41,7 +41,7 @@ public class PessoaResource {
 		return ResponseEntity.ok(pessoas);		
 	}
 
-	@Operation(summary = "Busca registro de pessoas por ID")
+	@Operation(summary = "Busca registro de pessoa por ID")
 	@GetMapping("/{id}")
 	public ResponseEntity<Optional<Pessoa>> buscarPorId(@PathVariable Long id) {
 		Optional<Pessoa> pessoa = pessoaService.buscarPorId(id);
@@ -51,7 +51,7 @@ public class PessoaResource {
 		return ResponseEntity.ok(pessoa);
 	}
 	
-	@Operation(summary = "Salva registro de pessoa")
+	@Operation(summary = "Cria um novo registro de pessoa")
 	@PostMapping
 	public ResponseEntity<Pessoa> criar(@RequestBody Pessoa pessoa) {
 		Pessoa newPessoa = pessoaService.criar(pessoa);
@@ -62,7 +62,7 @@ public class PessoaResource {
 		return ResponseEntity.ok(newPessoa);
 	}
 	
-	@Operation(summary = "Atualiza registro de pessoa")
+	@Operation(summary = "Atualiza um registro de pessoa")
 	@PutMapping
 	public ResponseEntity<Pessoa> atualizar(@RequestBody Pessoa pessoa) {
 		Pessoa updPessoa = pessoaService.atualizar(pessoa);
@@ -72,7 +72,7 @@ public class PessoaResource {
 		return ResponseEntity.ok(updPessoa);		
 	}	
 	
-	@Operation(summary = "Exclui registro de pessoa")
+	@Operation(summary = "Exclui um registro de pessoa")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 		pessoaService.deletar(id);
