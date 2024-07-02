@@ -38,6 +38,7 @@ Esta aplicação permite o cadastro e gerenciamento de pessoas e contatos, com m
   - **Campos**: `id`, `contato`, `tipo`.
 - **GET /api//contatos**: Listar todos os contatos de uma pessoa.
 - **GET /api/contatos/{id}**: Buscar contato por ID.
+- **GET /api/contatos/pessoa/{id}**: Listar todos os contatos relacionados à uma pessoa.
 - **PUT /api/contatos**: Atualizar um contato.
 - **DELETE /api/contatos/{id}**: Deletar um contato.
 
