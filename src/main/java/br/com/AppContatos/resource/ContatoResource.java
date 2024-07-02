@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.AppContatos.service.ContatoService;
 import io.swagger.v3.oas.annotations.Operation;
+import br.com.AppContatos.dto.ContatoDTO;
 import br.com.AppContatos.model.Contato;
 
 @RestController
@@ -73,6 +74,20 @@ public class ContatoResource {
 	public ResponseEntity<?> deletar(@PathVariable Long id) {
 		contatoService.deletar(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+	
+	@Operation(summary = "Pesquisa de todos os contatos relacionados à uma pessoa")
+	@GetMapping("/pessoa/{id}")
+	public ResponseEntity<List<ContatoDTO>> buscarContatosPorIdPessoa(@PathVariable Long id) {
+		
+		List<ContatoDTO> contatoDto = contatoService.buscarContatosPorIdPessoa(id);	
+		if(contatoDto == null) {
+			return ResponseEntity.notFound().build();
+		}
+		if(contatoDto.size() == 0) {
+			ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(contatoDto);		
 	}
 	
 }
