@@ -41,10 +41,13 @@ Esta aplicação permite o cadastro e gerenciamento de pessoas e contatos, com m
 - **PUT /api/contatos**: Atualizar um contato.
 - **DELETE /api/contatos/{id}**: Deletar um contato.
 
-
 ### Link da Documentação OpenAPI:
 
 - Local - http://localhost:8080/swagger-ui.html
+** Para acessar a documentação localmente deve-se alterar de "prod" para "dev" na linha 25 do arquivo application-properties.
+
 - Nuvem - https://appcontatos.onrender.com
+
+
   
 
