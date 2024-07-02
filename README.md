@@ -5,7 +5,7 @@
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 ![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)
 
-Este projeto é uma aplicação Spring Boot que permite o cadastro e gerenciamento de pessoas e seus contatos. Utiliza um banco de dados MySQL para armazenamento e o Swagger para documentação da API.
+Este projeto é uma aplicação Spring Boot que permite o cadastro e gerenciamento de pessoas e seus contatos. Utiliza um banco de dados MySQL para armazenamento local, PostgreSQL para armazenamento em nuvem e o Swagger para documentação da API.
 
 ## Descrição
 
@@ -16,6 +16,7 @@ Esta aplicação permite o cadastro e gerenciamento de pessoas e contatos, com m
 - **Java**
 - **Spring Boot**
 - **MySQL**
+- **PostgreSQL**
 - **Open API - Swagger**
 - **Maven**
 
@@ -40,5 +41,10 @@ Esta aplicação permite o cadastro e gerenciamento de pessoas e contatos, com m
 - **PUT /api/contatos**: Atualizar um contato.
 - **DELETE /api/contatos/{id}**: Deletar um contato.
 
+
+### Link da Documentação OpenAPI:
+
+- Local - http://localhost:8080/swagger-ui.html
+- Nuvem - https://appcontatos.onrender.com
   
 
