@@ -44,7 +44,7 @@ Esta aplicação permite o cadastro e gerenciamento de pessoas e contatos, com m
 ### Link da Documentação OpenAPI:
 
 - Local - http://localhost:8080/swagger-ui.html
-** Para acessar a documentação localmente deve-se alterar de "prod" para "dev" na linha 25 do arquivo application-properties. **
+- ** Para acessar a documentação localmente deve-se alterar de "prod" para "dev" na linha 25 do arquivo application-properties. **
 
 - Nuvem - https://appcontatos.onrender.com
 
